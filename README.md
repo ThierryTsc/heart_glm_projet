@@ -43,8 +43,8 @@ La variable cible (`HeartDisease`) est binaire :
 - Construction de **matrices de confusion** pour différents seuils (0.5, 0.8) ;
 - Calcul des indicateurs clés :
   - Précision (accuracy)
-  - Sensibilité (recall)
-  - Spécificité
+  - Sensibilité (vrai positif)
+  - Spécificité (vrai négatif)
   - Valeur prédictive positive (précision)
   - Balanced Accuracy
 
@@ -58,13 +58,13 @@ La variable cible (`HeartDisease`) est binaire :
 
 ### ✔️ Modèle avec seuil 0.5
 
-| Indicateur         | Valeur      |
-|--------------------|-------------|
-| Accuracy           | **88.3 %**  |
-| Sensibilité        | 80.2 %      |
-| Spécificité        | 95.7 %      |
-| Précision (PPV)    | 94.4 %      |
-| Kappa              | 0.76        |
+| Indicateur                                                   | Valeur      |
+|--------------------------------------------------------------|-------------|
+| Accuracy                                                     | **88.3 %**  |
+| Sensibilité (vrai positif)                                   | 80.2 %      |
+| Spécificité (vrai négatif)                                   | 95.7 %      |
+| Précision (PPV)                                              | 94.4 %      |
+| Kappa (accord réel entre prédictions et réalité)             | 0.76        |
 
 ### 🔁 Test avec seuil à 0.8
 
@@ -106,9 +106,10 @@ Ce projet démontre qu’un **modèle de régression logistique bien préparé**
 ```bash
 📦 heart-disease-logit
 ├── data/
-│   └── heart.csv               # Jeu de données brut
-├── src/
-│   └── modelisation.R          # Script complet R (nettoyage, modèle, évaluation)
-├── README.md                   # Ce fichier
-└── plots/
-    └── roc_curve.png           # (optionnel) Graphique ROC si généré
+│   └── heart.csv                # Jeu de données brut
+    └── heart_clean.csv          # Jeu de données nettoyé     
+├── scripts/                     # Dossier contenant tous les scripts R implémentés
+│   └── AnalyseVisuelle.R        # Script permettant de tracer les différents graphes utilisés pour une première approche
+|   └── Pretraitement.R          # Script permettant le prétraitement des données (suppression des lignes nulles, encodage..)
+|   └── Modele.R                 # Script implémentant le modéle de régression logistique
+└── figures/                     # Dossier contenant toutes les figures réalisés dans l'analyse visuelle
